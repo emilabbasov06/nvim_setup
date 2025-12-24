@@ -18,7 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Import color theme based on environment variable NVIM_THEME
-local default_color_scheme = 'onedark'
+local default_color_scheme = 'vscode'
 local env_var_nvim_theme = os.getenv 'NVIM_THEME' or default_color_scheme
 
 -- Define a table of theme modules
@@ -26,7 +26,8 @@ local themes = {
   nord = 'plugins.themes.nord',
   onedark = 'plugins.themes.onedark',
   rose = 'plugins.themes.rose',
-  everforest = 'plugins.themes.everforest'
+  everforest = 'plugins.themes.everforest',
+  vscoce = 'plugins.themes.vscode'
 }
 
 -- Setup plugins
