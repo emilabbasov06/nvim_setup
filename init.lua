@@ -27,7 +27,8 @@ local themes = {
   onedark = 'plugins.themes.onedark',
   rose = 'plugins.themes.rose',
   everforest = 'plugins.themes.everforest',
-  vscoce = 'plugins.themes.vscode'
+  vscode = 'plugins.themes.vscode',
+  tokyonight = 'plugins.themes.tokyonight',
 }
 
 -- Setup plugins
@@ -51,6 +52,7 @@ require('lazy').setup({
   require 'plugins.database',
   require 'plugins.misc',
   require 'plugins.harpoon',
+  require 'plugins.smear_cursor',
   -- require 'plugins.avante',
   require 'plugins.aerial',
   require 'plugins.vim-tmux-navigator',
