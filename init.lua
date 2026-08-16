@@ -28,7 +28,16 @@ local themes = {
   rose = 'plugins.themes.rose',
   everforest = 'plugins.themes.everforest',
   vscode = 'plugins.themes.vscode',
+  gruvbox = 'plugins.themes.gruvbox',
   tokyonight = 'plugins.themes.tokyonight',
+  catppuccin = 'plugins.themes.catppuccin',
+  monokai2 = 'plugins.themes.monokai2',
+  moneokai = 'plugins.themes.moneokai',
+  tokyodark = 'plugins.themes.tokyodark',
+  monochrome = 'plugins.themes.monochrome',
+  houston = 'plugins.themes.houston',
+  vimhybrid = 'plugins.themes.vim-hybrid',
+  githubdimmed = 'plugins.themes.github-dimmed',
 }
 
 -- Setup plugins
@@ -100,3 +109,16 @@ end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+--
+--
+local go_fmt_group = vim.api.nvim_create_augroup('GoFormat', { clear = true })
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+    -- Synchronously format the buffer before saving
+    vim.lsp.buf.format { async = false }
+  end,
+  group = go_fmt_group,
+})

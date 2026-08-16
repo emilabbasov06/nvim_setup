@@ -1,14 +1,41 @@
--- Custom code snippets for different purposes
+-- Custom code snippets and utility settings
+local ls_status, ls = pcall(require, 'luasnip')
 
--- Prevent LSP from overwriting treesitter color settings
--- https://github.com/NvChad/NvChad/issues/1907
-vim.hl.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitter's priority level
+-- 1. Golang Snippets (Requires LuaSnip)
+if ls_status then
+  local s = ls.snippet
+  local t = ls.text_node
+  local i = ls.insert_node
 
--- Appearance of diagnostics
+  ls.add_snippets('go', {
+    -- Error check: iferr
+    s('iferr', {
+      t { 'if err != nil {', '\treturn ' },
+      i(1, 'err'),
+      t { '', '}' },
+    }),
+    -- Main function: main
+    s('main', {
+      t { 'func main() {', '\t' },
+      i(0),
+      t { '', '}' },
+    }),
+    -- JSON tag: json
+    s('json', {
+      t '`json:"',
+      i(1, 'fieldName'),
+      t '"`',
+    }),
+  })
+end
+
+-- 2. Prevent LSP from overwriting treesitter color settings
+vim.hl.priorities.semantic_tokens = 95
+
+-- 3. Appearance of diagnostics
 vim.diagnostic.config {
   virtual_text = {
     prefix = '●',
-    -- Add a custom format function to show error codes
     format = function(diagnostic)
       local code = diagnostic.code and string.format('[%s]', diagnostic.code) or ''
       return string.format('%s %s', code, diagnostic.message)
@@ -17,7 +44,7 @@ vim.diagnostic.config {
   underline = false,
   update_in_insert = true,
   float = {
-    source = true, -- Or "if_many"
+    source = true,
   },
   signs = {
     text = {
@@ -33,7 +60,7 @@ vim.diagnostic.config {
   end,
 }
 
--- Highlight on yank
+-- 4. Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -43,7 +70,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Set kitty terminal padding to 0 when in nvim
+-- 5. Set kitty terminal padding to 0 when in nvim
 vim.cmd [[
   augroup kitty_mp
   autocmd!

@@ -2,6 +2,13 @@ return {
   'sphamba/smear-cursor.nvim',
 
   opts = {
+    stiffness = 0.85,
+    trailing_stiffness = 0.55,
+    trailing_exponent = 2.6,
+    distance_stop_animating = 0.5,
+    hide_target_hack = true,
+    time_interval = 12,
+
     -- Smear cursor when switching buffers or windows.
     smear_between_buffers = true,
 

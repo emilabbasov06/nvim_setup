@@ -126,7 +126,6 @@
 -- vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>', { noremap = true, silent = false })
 -- vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>', { noremap = true, silent = false })
 
-
 -- ==============================
 --        KEYMAP SETTINGS
 -- ==============================
@@ -142,9 +141,9 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', opts)
 --        FILE ACTIONS
 -- ==============================
 
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', opts)           -- Save
-vim.keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>a', opts)     -- Save (Insert mode)
-vim.keymap.set('n', '<C-n>', '<cmd>enew<CR>', opts)        -- New file
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', opts) -- Save
+vim.keymap.set('i', '<C-s>', '<Esc><cmd>w<CR>a', opts) -- Save (Insert mode)
+vim.keymap.set('n', '<C-n>', '<cmd>enew<CR>', opts) -- New file
 
 -- Close file/tab (VS Code style)
 -- If you do NOT use Bdelete, replace with bd below
@@ -170,8 +169,8 @@ vim.keymap.set('n', '<Right>', ':bnext<CR>', opts)
 vim.keymap.set('n', '\\', '<cmd>Neotree toggle<CR>', opts) -- Normal toggle
 
 -- Arrow key Neo-tree behavior
-vim.keymap.set('n', '<Up>', ':Neotree toggle<CR>', opts)  -- Up = open/close Neo-tree
-vim.keymap.set('n', '<Down>', '<C-w>w', opts)             -- Down = return focus to editor
+vim.keymap.set('n', '<Up>', ':Neotree toggle<CR>', opts) -- Up = open/close Neo-tree
+vim.keymap.set('n', '<Down>', '<C-w>w', opts) -- Down = return focus to editor
 
 -- ==============================
 --       SPLIT NAVIGATION
@@ -186,13 +185,13 @@ vim.keymap.set('n', '<C-Down>', '<C-w>j', opts)
 --     SEARCH / SCROLLING
 -- ==============================
 
-vim.keymap.set('n', '<Esc>', ':noh<CR>', opts)            -- Clear search highlight
+vim.keymap.set('n', '<Esc>', ':noh<CR>', opts) -- Clear search highlight
 
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)             -- Scroll down centered
-vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)             -- Scroll up centered
+vim.keymap.set('n', '<C-d>', '<C-d>zz', opts) -- Scroll down centered
+vim.keymap.set('n', '<C-u>', '<C-u>zz', opts) -- Scroll up centered
 
-vim.keymap.set('n', 'n', 'nzzzv', opts)                   -- Search next centered
-vim.keymap.set('n', 'N', 'Nzzzv', opts)                   -- Search prev centered
+vim.keymap.set('n', 'n', 'nzzzv', opts) -- Search next centered
+vim.keymap.set('n', 'N', 'Nzzzv', opts) -- Search prev centered
 
 -- ==============================
 --           NAVIGATION
@@ -205,7 +204,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 --           EDITING
 -- ==============================
 
-vim.keymap.set('n', 'x', '"_x', opts)                     -- Delete without copying
+vim.keymap.set('n', 'x', '"_x', opts) -- Delete without copying
 
 -- Move selected text (VS Code Alt+Up/Down)
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
@@ -219,17 +218,21 @@ vim.keymap.set('i', 'kj', '<Esc>', opts)
 --        CLIPBOARD CONTROL
 -- ==============================
 
-vim.keymap.set({ 'n', 'v' }, '<C-c>', '"+y', opts)     -- Copy
-vim.keymap.set('n', '<C-v>', '"+p', opts)              -- Paste (Normal Mode)
-vim.keymap.set('i', '<C-v>', '<Esc>"+pa', opts)        -- Paste (Insert Mode)
+vim.keymap.set({ 'n', 'v' }, '<C-c>', '"+y', opts) -- Copy
+vim.keymap.set('n', '<C-v>', '"+p', opts) -- Paste (Normal Mode)
+vim.keymap.set('i', '<C-v>', '<Esc>"+pa', opts) -- Paste (Insert Mode)
 
 -- ==============================
 --     DIAGNOSTICS (LSP)
 -- ==============================
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', function() vim.diagnostic.jump { count = -1, float = true } end)
-vim.keymap.set('n', ']d', function() vim.diagnostic.jump { count = 1, float = true } end)
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = -1, float = true }
+end)
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = 1, float = true }
+end)
 
 -- ==============================
 --       SESSIONS (OPTIONAL)
@@ -237,7 +240,6 @@ vim.keymap.set('n', ']d', function() vim.diagnostic.jump { count = 1, float = tr
 
 vim.keymap.set('n', '<leader>ss', ':mksession! .session.vim<CR>')
 vim.keymap.set('n', '<leader>sl', ':source .session.vim<CR>')
-
 
 vim.keymap.set('n', '<C-x>', '"+dd', opts)
 vim.keymap.set('v', '<C-x>', '"+d', opts)
@@ -253,5 +255,9 @@ vim.keymap.set('i', '<C-v>', '<Esc>"+pa', opts)
 vim.keymap.set('i', '<C-BS>', '<C-w>', opts)
 vim.keymap.set('i', '<C-H>', '<C-w>', opts)
 
+-- My own setup
+
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
+
 -- If clipboard not automatic, enable:
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
